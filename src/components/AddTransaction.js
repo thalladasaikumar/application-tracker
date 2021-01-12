@@ -19,6 +19,7 @@ export const AddTransaction = () => {
         const formData = {
             company: company,
             position: position,
+            date: date,
             jobLink: jobLink,
             appliedThrough: appliedThrough,
             jobDescription: jobDescription
@@ -29,6 +30,7 @@ export const AddTransaction = () => {
         setCompany("")
         setPosition("")
         setJobLink("")
+        setDate("")
         setAppliedThrough("")
         setJobDescription("")
     }

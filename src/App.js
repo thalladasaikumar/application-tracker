@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components/Header';
 import { AddTransaction } from './components/AddTransaction';
+import {TableApplicationsView} from './components/TableApplicationsView';
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
         <br/>
       </header>
       <AddTransaction />
+      <br/>
+      <br/>
+      <TableApplicationsView />
     </div>
   );
 }
