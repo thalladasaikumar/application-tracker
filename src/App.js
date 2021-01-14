@@ -1,22 +1,23 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components/Header';
-import { AddTransaction } from './components/AddTransaction';
+import { AddApplication } from './components/AddApplication';
 import {TableApplicationsView} from './components/TableApplicationsView';
+import {GlobalProvider} from './context/GlobalState'
 
 function App() {
   return (
-    <div className="App">
+    <GlobalProvider>
       <header className="App-header">
         <Header />
         <br/>
         <br/>
       </header>
-      <AddTransaction />
+      <AddApplication />
       <br/>
       <br/>
       <TableApplicationsView />
-    </div>
+    </GlobalProvider>
   );
 }
 
