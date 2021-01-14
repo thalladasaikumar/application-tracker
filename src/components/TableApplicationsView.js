@@ -1,20 +1,11 @@
-import React from 'react'
-import { Container, Table, NavLink } from 'react-bootstrap';
+import React, {useContext} from 'react'
+import { Container, Table } from 'react-bootstrap';
+import {GlobalContext} from '../context/GlobalState';
+import {TableApplicationRecord} from './TableApplicationRecord'
 
 export const TableApplicationsView = () => {
-    let storedVal = JSON.parse(localStorage.getItem('applications'))
-    if(storedVal!==null){
-        storedVal = storedVal.applications
-    } else{
-        storedVal = []
-    }
-    let applications = [];
-    if(storedVal.length>0){
-        storedVal.map((eachRow) => {
-            applications.push(JSON.parse(eachRow));
-        })
-    }
-    console.log(applications);
+
+    const {applications} = useContext(GlobalContext);    
     return (
         <div>
             <Container>
@@ -28,21 +19,13 @@ export const TableApplicationsView = () => {
                             <th>Applied through</th>
                             <th>Job Link</th>
                             <th>Job Description</th>
+                            <th>Application status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {applications.map((eachRow, index) => {
-                            return(
-                                <tr key={index}>
-                                    <td>{eachRow.date}</td>
-                                    <td>{eachRow.company}</td>
-                                    <td>{eachRow.position}</td>
-                                    <td>{eachRow.appliedThrough}</td>
-                                    <td><NavLink href={eachRow.jobLink}>Link</NavLink></td>
-                                    {eachRow.jobDescription && <td>{eachRow.jobDescription}</td>}
-                                </tr>
-                            )
-                        })}
+                        {applications.map(eachRow => (
+                            <TableApplicationRecord key={eachRow.id} eachRow={eachRow} />
+                        ))}
                     </tbody>
                 </Table> }
             </Container>

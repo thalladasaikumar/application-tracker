@@ -1,32 +1,37 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
+import {GlobalContext} from '../context/GlobalState'
 
-export const AddTransaction = () => {
-    let applications = [];
+export const AddApplication = () => {
+    
+    const [company, setCompany] = useState("");
+    const [position, setPosition] = useState("");
+    const [jobLink, setJobLink] = useState("");
+    const [date, setDate] = useState("");
+    const [appliedThrough, setAppliedThrough] = useState("");
+    const [jobDescription, setJobDescription] = useState("");
+    
+    const {addApplication} = useContext(GlobalContext);
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const storedVal = localStorage.getItem('applications')
-        if(storedVal===null){
-            applications = []
-        } else{
-            applications = JSON.parse(storedVal).applications
-        }
         
         const formData = {
+            id:Math.floor(Math.random*10000),
             company: company,
             position: position,
             date: date,
             jobLink: jobLink,
             appliedThrough: appliedThrough,
-            jobDescription: jobDescription
+            jobDescription: jobDescription,
+            applicationStatus: "Applied"
         }
 
-        applications.push(JSON.stringify(formData))
-        localStorage.setItem('applications', JSON.stringify({applications: applications}))
+        addApplication(formData);
         setCompany("")
         setPosition("")
         setJobLink("")
@@ -34,13 +39,6 @@ export const AddTransaction = () => {
         setAppliedThrough("")
         setJobDescription("")
     }
-
-    const [company, setCompany] = useState("");
-    const [position, setPosition] = useState("");
-    const [jobLink, setJobLink] = useState("");
-    const [date, setDate] = useState("");
-    const [appliedThrough, setAppliedThrough] = useState("");
-    const [jobDescription, setJobDescription] = useState("");
 
     return (
         <div>
