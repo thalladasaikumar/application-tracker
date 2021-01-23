@@ -30,7 +30,7 @@ export const AddApplication = () => {
             jobDescription: jobDescription,
             applicationStatus: "Applied"
         }
-
+        
         addApplication(formData);
         setCompany("")
         setPosition("")
