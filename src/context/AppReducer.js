@@ -7,7 +7,6 @@ export default (state, action) => {
                 applications:[action.payload,...state.applications]
             }
         case 'UPDATE_APPLICATION': 
-            console.log(action.payload)
             return{
                 ...state,
                 
@@ -18,6 +17,12 @@ export default (state, action) => {
                     }
                     return application
                 })
+            }
+        case 'VALIDATE_USER':
+            //action.payload = state.userData
+            return{
+                ...state,
+                userData:[action.payload,...state.userData]
             }
         default:
             return state;

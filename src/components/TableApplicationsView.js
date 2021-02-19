@@ -8,7 +8,7 @@ export const TableApplicationsView = () => {
     const {applications} = useContext(GlobalContext);    
     return (
         <div>
-            <Container>
+            <Container fluid>
                 {applications.length>0 && 
                 <Table striped bordered hover variant="dark" responsive>
                     <thead>
